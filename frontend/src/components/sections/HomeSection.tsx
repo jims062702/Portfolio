@@ -91,9 +91,6 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate }) => {
                     4 Live Flagship Apps
                   </span>
                 </div>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Continuous conveyor stream: Project 1 through 4 in an uninterrupted infinite reel
-                </p>
               </div>
             </div>
 
@@ -119,9 +116,6 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate }) => {
                 <h4 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight leading-snug">
                   Production Full-Stack &amp; Interactive UX
                 </h4>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
-                  Hover directly over the project window to activate continuous vertical scrolling. When your cursor leaves, it pauses right on that project and smoothly resumes when re-hovered.
-                </p>
               </div>
 
               {/* Flagship KPI Highlights */}
@@ -385,7 +379,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate }) => {
           <div className="flex items-center justify-between pt-3 border-t border-slate-200/60 dark:border-slate-800/80">
             <span className="text-xs text-slate-500">Industry Certifications</span>
             <span className="text-xs font-semibold text-amber-600 dark:text-amber-400">
-              Details ↗
+              Details
             </span>
           </div>
         </div>
@@ -431,7 +425,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate }) => {
           <div className="flex items-center justify-between pt-3 border-t border-slate-200/60 dark:border-slate-800/80">
             <span className="text-xs text-slate-500">Tailored Client Solutions</span>
             <span className="text-xs font-semibold text-blue-600 dark:text-blue-400">
-              Tech Specs ↗
+              Tech Specs
             </span>
           </div>
         </div>
@@ -473,7 +467,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate }) => {
           <div className="flex items-center justify-between pt-3 border-t border-slate-200/60 dark:border-slate-800/80">
             <span className="text-xs text-slate-500">Ready to build your next app?</span>
             <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-              Schedule Call ↗
+              Schedule Call
             </span>
           </div>
         </div>
