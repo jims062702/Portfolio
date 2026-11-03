@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Circular View Transition for Theme Switcher */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none !important;
+  mix-blend-mode: normal !important;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 999999;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* Mask for smooth fading edges in marquees */
+.mask-linear {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 4%,
+    black 96%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 4%,
+    black 96%,
+    transparent 100%
+  );
+}
+
+/* Vertical Reel Infinite Scroll Animation: Pauses on leave, Resumes on hover, 100% seamless */
+@keyframes verticalReelLoop {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.vertical-infinite-reel {
+  animation: verticalReelLoop 20s linear infinite;
+  animation-play-state: paused;
+  will-change: transform;
+}
+
+.vertical-reel-container:hover .vertical-infinite-reel,
+.vertical-reel-container:active .vertical-infinite-reel,
+.vertical-infinite-reel.is-running {
+  animation-play-state: running;
+}
+
+/* Horizontal Tech Stack Marquees: Continuous Auto-Scroll, Pauses on Hover, Resumes on Unhover without restarting */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee-stream-left {
+  animation: marqueeLeft 34s linear infinite;
+  animation-play-state: running;
+  will-change: transform;
+  display: flex;
+  width: max-content;
+}
+
+.marquee-stream-right {
+  animation: marqueeRight 34s linear infinite;
+  animation-play-state: running;
+  will-change: transform;
+  display: flex;
+  width: max-content;
+}
+
+/* Pause ONLY when the cursor is directly over the tools stream track, resume seamlessly when unhovered */
+.tech-marquee-stream-track:hover .marquee-stream-left,
+.tech-marquee-stream-track:hover .marquee-stream-right {
+  animation-play-state: paused !important;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
