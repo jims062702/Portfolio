@@ -58,10 +58,6 @@ export const AboutSection: React.FC = () => {
     <div className="flex flex-col gap-10 w-full max-w-7xl mx-auto pb-16">
       {/* Section Header */}
       <div>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-semibold mb-2">
-          <BookOpen size={13} />
-          <span>About My Journey &amp; Background</span>
-        </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 dark:text-white tracking-tight">
           Architecting Modern Full-Stack &amp; AI Web Experiences
         </h1>

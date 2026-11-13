@@ -416,10 +416,6 @@ export const ProjectsSection: React.FC = () => {
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-semibold mb-2">
-            <Sparkles size={13} className="text-blue-500" />
-            <span>Curated Engineering Portfolio</span>
-          </div>
           <h1 className="text-3xl sm:text-4xl font-black text-slate-950 dark:text-white tracking-tight">
             Featured Projects &amp; Applications
           </h1>

@@ -107,10 +107,6 @@ export const ContactSection: React.FC = () => {
     <div className="flex flex-col gap-8 w-full max-w-7xl mx-auto pb-16">
       {/* Header */}
       <div>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-semibold mb-2">
-          <MessageSquare size={13} />
-          <span>Encrypted Direct Messaging</span>
-        </div>
         <h1 className="text-3xl sm:text-4xl font-black text-slate-950 dark:text-white tracking-tight">
           Let’s Build Something Exceptional
         </h1>
