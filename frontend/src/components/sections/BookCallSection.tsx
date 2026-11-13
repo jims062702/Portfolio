@@ -71,11 +71,41 @@ export const BookCallSection: React.FC = () => {
     '08:00 PM',
   ]
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitError, setSubmitError] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
+    setSubmitError('')
 
-    setTimeout(() => {
+    const selectedTypeObj = meetingTypes.find(t => t.id === selectedMeetingType)
+    const currentMonth = today.toLocaleString('default', { month: 'long' })
+    const currentYear = today.getFullYear()
+
+    try {
+      const response = await fetch('/api/book-call', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          notes: formData.notes.trim(),
+          meetingType: selectedTypeObj?.title || selectedMeetingType,
+          meetingDuration: selectedTypeObj?.duration || 'N/A',
+          date: `${currentMonth} ${selectedDate}, ${currentYear}`,
+          timeSlot: selectedSlot,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone + ' (GMT+8)',
+        }),
+      })
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}))
+        throw new Error(data.error || 'Failed to send booking request.')
+      }
+
       setLoading(false)
       setIsSubmitted(true)
       // Confetti celebration
@@ -88,7 +118,10 @@ export const BookCallSection: React.FC = () => {
       } catch {
         // fallback
       }
-    }, 800)
+    } catch (err: any) {
+      setLoading(false)
+      setSubmitError(err.message || 'Something went wrong. Please try reaching out via LinkedIn.')
+    }
   }
 
   const selectedTypeObj = meetingTypes.find(t => t.id === selectedMeetingType)
@@ -283,6 +316,13 @@ export const BookCallSection: React.FC = () => {
                     />
                   </div>
                 </div>
+
+                {/* Error Banner */}
+                {submitError && (
+                  <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-500 text-xs">
+                    {submitError}
+                  </div>
+                )}
 
                 {/* Submit Action */}
                 <div className="pt-2 flex items-center justify-between">

@@ -54,10 +54,6 @@ export const ContactSection: React.FC = () => {
     setErrorMessage('')
 
     try {
-      // Secure Dispatch Pattern:
-      // In production, this dispatches to your backend serverless route `/api/contact`.
-      // The personal recipient email is stored securely in environment variables (e.g. process.env.RECIPIENT_EMAIL)
-      // on the server, completely inaccessible and invisible to frontend inspect tools or network payloads.
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -72,12 +68,11 @@ export const ContactSection: React.FC = () => {
           message: formData.message.trim(),
           timestamp: new Date().toISOString(),
         }),
-      }).catch(() => null)
+      })
 
-      // If the static environment doesn't have an active serverless daemon running,
-      // simulate the graceful successful API dispatch
-      if (!response || !response.ok) {
-        await new Promise(res => setTimeout(res, 900))
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}))
+        throw new Error(data.error || 'Failed to send message.')
       }
 
       setStatus('success')
@@ -90,9 +85,9 @@ export const ContactSection: React.FC = () => {
       } catch {
         // fallback
       }
-    } catch {
+    } catch (err: any) {
       setStatus('error')
-      setErrorMessage('An unexpected error occurred. Please try reaching out via LinkedIn.')
+      setErrorMessage(err.message || 'An unexpected error occurred. Please try reaching out via LinkedIn.')
     }
   }
 
