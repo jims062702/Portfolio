@@ -4,7 +4,6 @@ import {
   MapPin,
   Award,
   ShieldCheck,
-  BookOpen,
   Clock,
   Lock,
   ChevronLeft,

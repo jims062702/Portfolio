@@ -6,7 +6,6 @@ import {
   ChevronRight,
   Search,
   X,
-  Sparkles,
   Zap,
   CheckCircle2,
   Lock,

@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Cpu,
   Layers,
   Server,
   Wrench,
